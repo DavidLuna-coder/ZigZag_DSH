@@ -6,6 +6,8 @@ TagManager:
   tags:
   - btn_start
   - Floor
+  - price
+  - Gem
   layers:
   - Default
   - TransparentFX
