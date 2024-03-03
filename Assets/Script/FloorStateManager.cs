@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FloorStateManager : MonoBehaviour
@@ -7,15 +6,13 @@ public class FloorStateManager : MonoBehaviour
     [SerializeField] GameObject floor;
     [SerializeField] GameObject price;
     [SerializeField] GameObject gem;
+    [SerializeField] ScoreManager scoreManager;
     private float valX = 0f;
     private float valZ = 0f;
     private float valY = 0f;
-   
     private float starY= 0f;
   
     private float valueToIncrease;
-    private int totalpoints=0;
-    
     private const string FLOOR_TAG = "Floor";
     private const string PRICE_TAG = "price";
     private const string GEM_TAG = "Gem";
@@ -31,7 +28,7 @@ public class FloorStateManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         
     }
 
@@ -46,9 +43,9 @@ public class FloorStateManager : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
-       
         if (other.gameObject.CompareTag(FLOOR_TAG))
         {
+            scoreManager.Score++;
             StartCoroutine(DeleteFloor(other.gameObject));
         }
 
@@ -56,21 +53,17 @@ public class FloorStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-       
         if (other.gameObject.CompareTag(PRICE_TAG))
         {
-            
-            totalpoints+=3;
+            scoreManager.Score+=3;
             Destroy(other.gameObject);
         }
         else
         {
             if (other.gameObject.CompareTag(GEM_TAG))
             {
-                
-                totalpoints++;
-                Debug.Log(totalpoints);
+                scoreManager.Score++;
+                Debug.Log(scoreManager.Score);
                 Destroy(other.gameObject);
             }
         }

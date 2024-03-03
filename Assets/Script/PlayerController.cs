@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float speed = 0.5f;
+    public float speed = 6f;
 
     private Vector3 currentDirection;
 
