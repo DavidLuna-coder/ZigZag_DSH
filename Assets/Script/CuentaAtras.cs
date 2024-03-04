@@ -15,6 +15,7 @@ public class CuentaAtras : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _image.gameObject.SetActive(false);
         _button.onClick.AddListener(StartCountdown);               
     }
 
