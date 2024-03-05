@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ChangeDirecction();
+        }
+        if (transform.position.y < -10)
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
